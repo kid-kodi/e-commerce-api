@@ -13,7 +13,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/docs', swaggerRoutes);
 //Start the server
 app.listen(process.env.PORT, () => {
-  console.log('eeee');
+  console.log(`Demarrage sur le port ${process.env.PORT}`);
 });
 
 // https://blog.logrocket.com/documenting-express-js-api-swagger/

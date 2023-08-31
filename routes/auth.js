@@ -1,5 +1,15 @@
 import express from 'express';
-import { login, register } from '../controllers/auth.js';
+import {
+  register,
+  login,
+  verifyAccount,
+  getProfile,
+  updateProfile,
+  forgotPasswordUser,
+  resetPasswordGetUser,
+  resetPasswordPostUser,
+  logout,
+} from '../controllers/auth.js';
 
 const router = express.Router();
 
@@ -85,6 +95,23 @@ const router = express.Router();
 
 router.post('/register', register);
 
+router.get('/verifyAccount', verifyAccount);
+
 router.post('/login', login);
+
+router.get('/getProfile/:id', getProfile);
+
+router.put('/updateProfile', updateProfile);
+
+//Mot de passe oublé
+router.post('/forgotPassword', forgotPasswordUser);
+
+//Mot de passe oublié (Celui ci est un get, il permet d'afficher l'émail de l'utilisateur et le formualire pour réinitailser)
+router.get('/resetPassword/:id/:token', resetPasswordGetUser);
+
+//Mot de passe oublié (Formulaire qui envoie le nouveau password)
+router.post('/resetPassword/:id/:token', resetPasswordPostUser);
+
+router.post('/logout', logout);
 
 export default router;
